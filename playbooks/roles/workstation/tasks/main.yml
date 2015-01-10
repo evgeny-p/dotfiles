@@ -1,1 +1,2 @@
 - include: vim.yml
+- include: zsh.yml

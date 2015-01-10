@@ -1,0 +1,28 @@
+- name: Install zsh
+  apt:
+    name=zsh
+    state=latest
+  sudo: yes
+
+- name: Install oh-my-zsh
+  git:
+    repo=git://github.com/robbyrussell/oh-my-zsh.git
+    dest="{{ ansible_env.HOME }}/.oh-my-zsh"
+    accept_hostkey=True
+
+- name: Install zsh-syntax-highlighting
+  git:
+    repo=git://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest="{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+
+- name: Create zsh config symlinks
+  file:
+    src={{ item }}
+    dest="{{ ansible_env.HOME }}/{{ item | basename }}"
+    state=link
+  with_items:
+    - "{{ dotfiles.dot }}/zsh/.zshrc"
+
+- name: Change shell to zsh
+  shell: "chsh -s /bin/zsh {{ ansible_env.USER }}"
+  sudo: yes
