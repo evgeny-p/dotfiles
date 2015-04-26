@@ -68,3 +68,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 export TERM=screen-256color
+
+venvwrapper_dir='/usr/share/virtualenvwrapper/virtualenvwrapper.sh'
+if [[ -f $venvwrapper_dir ]]; then
+    source $venvwrapper_dir
+fi
