@@ -17,6 +17,3 @@
   git:
     repo=https://github.com/gmarik/Vundle.vim.git
     dest="{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
-
-- name: Install vim plugins
-  shell: vim +PluginInstall +qall
