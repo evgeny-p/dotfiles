@@ -1,0 +1,9 @@
+- name: Install python
+  apt:
+    name={{ item }}
+    state=latest
+  sudo: yes
+  with_items:
+    - python
+    - python3
+    - virtualenvwrapper
