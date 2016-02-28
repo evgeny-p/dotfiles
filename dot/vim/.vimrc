@@ -12,6 +12,7 @@ call vundle#begin()
 " required! 
 Plugin 'gmarik/vundle'
 
+Plugin 'chase/vim-ansible-yaml'
 Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
