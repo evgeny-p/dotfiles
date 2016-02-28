@@ -16,6 +16,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Lokaltog/vim-powerline'
+Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end() " required
 "
