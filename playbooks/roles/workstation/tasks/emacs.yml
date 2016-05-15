@@ -1,0 +1,13 @@
+- name: Install emacs
+  apt:
+    name=emacs
+    state=latest
+  sudo: yes
+
+- name: Create emacs config symlinks
+  file:
+    src={{ item }}
+    dest="{{ ansible_env.HOME }}/{{ item | basename }}"
+    state=link
+  with_items:
+    - "{{ dotfiles.dot }}/emacs/.emacs.d"

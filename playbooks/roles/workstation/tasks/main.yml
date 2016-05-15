@@ -1,3 +1,4 @@
+- include: emacs.yml
 - include: python.yml
 - include: tmux.yml
 - include: utils.yml
