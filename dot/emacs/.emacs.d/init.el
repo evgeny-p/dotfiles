@@ -9,6 +9,7 @@
 
 (defvar my-packages
   '(company
+    company-irony
     fill-column-indicator
     monokai-theme))
 
