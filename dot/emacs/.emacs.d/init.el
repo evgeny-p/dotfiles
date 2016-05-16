@@ -11,7 +11,8 @@
   '(company
     fill-column-indicator
     monokai-theme
-    neotree))
+    neotree
+    smooth-scrolling))
 
 (mapc #'(lambda (package)
           (unless (package-installed-p package)
