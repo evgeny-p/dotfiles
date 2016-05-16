@@ -11,7 +11,8 @@
   '(company
     company-irony
     fill-column-indicator
-    monokai-theme))
+    monokai-theme
+    neotree))
 
 (mapc #'(lambda (package)
           (unless (package-installed-p package)
