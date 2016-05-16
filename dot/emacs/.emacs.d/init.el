@@ -10,7 +10,8 @@
 (defvar my-packages
   '(company
     fill-column-indicator
-    monokai-theme))
+    monokai-theme
+    neotree))
 
 (mapc #'(lambda (package)
           (unless (package-installed-p package)
