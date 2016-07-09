@@ -12,3 +12,4 @@
       c-basic-offset 4)
 
 (smooth-scrolling-mode 1)
+(electric-pair-mode 1)
