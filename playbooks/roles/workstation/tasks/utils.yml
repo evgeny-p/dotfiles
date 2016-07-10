@@ -1,0 +1,14 @@
+- name: Install utils
+  apt:
+    name={{ item }}
+    state=latest
+  sudo: yes
+  with_items:
+    - cmake
+    - g++
+    - gcc 
+    - gdb 
+    - gitk 
+    - htop 
+    - mc 
+    - ncdu 
