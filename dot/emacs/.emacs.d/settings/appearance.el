@@ -8,6 +8,8 @@
 ; Ignore "Wrong type argument: stringp, highlight"
 (ignore-errors (load-theme 'monokai t))
 
+(setq neo-theme 'ascii)
+
 (global-hl-line-mode 1)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
