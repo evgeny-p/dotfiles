@@ -11,6 +11,7 @@
   '(company
     fill-column-indicator
     monokai-theme
+    mwim
     neotree
     smooth-scrolling))
 
