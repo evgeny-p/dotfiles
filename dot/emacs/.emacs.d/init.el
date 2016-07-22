@@ -10,6 +10,7 @@
 (defvar my-packages
   '(company
     fill-column-indicator
+    greymatters-theme
     monokai-theme
     mwim
     neotree
