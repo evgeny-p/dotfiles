@@ -12,6 +12,7 @@
     company-irony
     fill-column-indicator
     monokai-theme
+    mwim
     neotree
     smooth-scrolling))
 
