@@ -15,7 +15,12 @@
   (define-key c-mode-base-map [f4] 'ff-find-related-file)
 
   ; fill column indicator
-  (fci-mode 1)
-  (setq fill-column 100))
+  ; Switched off: conflicts with company mode
+  ; https://github.com/alpaker/Fill-Column-Indicator/issues/54
+  ; https://github.com/company-mode/company-mode/issues/180#issuecomment-55047120
+  ; http://emacs.stackexchange.com/questions/147/how-can-i-get-a-ruler-at-column-80
+  ; (fci-mode 1)
+  ; (setq fill-column 100)
+  )
 
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
