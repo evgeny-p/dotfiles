@@ -1,0 +1,24 @@
+- name: Create xkb config directory
+  file:
+    path="{{ ansible_env.HOME }}/.config/xkb"
+    state=directory
+    mode=0755
+
+- name: Create xkb config symlinks
+  file:
+    src={{ item }}
+    dest="{{ ansible_env.HOME }}/.config/xkb/personal"
+    state=link
+  with_items:
+    - "{{ dotfiles.dot }}/xkb/personal"
+
+- name: Create autostart directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/autostart"
+    state: directory
+    mode: 0755
+
+- name: Create xkb autostart config
+  template:
+    src="load-xkb-settings.desktop.j2"
+    dest="{{ ansible_env.HOME }}/.config/autostart/load-xkb-settings.desktop"

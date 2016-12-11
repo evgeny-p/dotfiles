@@ -1,0 +1,12 @@
+xkb_keymap {
+	xkb_keycodes  { include "evdev+aliases(qwerty)"	};
+	xkb_types     { include "complete"	};
+	xkb_compat    { include "complete+ledscroll(group_lock)"	};
+	xkb_geometry  { include "pc(pc105)"	};
+
+	xkb_symbols   {
+		include "pc+us+ru:2+inet(evdev)+level3(ralt_switch)+capslock(numlock)+typo(base):1+typo(base):2"
+	
+		key <SPCE> { [ space, underscore ] };
+	};
+};
