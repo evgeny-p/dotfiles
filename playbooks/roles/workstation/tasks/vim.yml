@@ -1,19 +1,20 @@
 - name: Install vim
-  apt:
-    name=vim
-    state=latest
   sudo: yes
+  apt:
+    state: latest
+    name:
+      - vim
 
 - name: Create vim config symlinks
   file:
-    src={{ item }}
-    dest="{{ ansible_env.HOME }}/{{ item | basename }}"
-    state=link
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/{{ item | basename }}"
+    state: link
   with_items:
     - "{{ dotfiles.dot }}/vim/.vim"
     - "{{ dotfiles.dot }}/vim/.vimrc"
 
 - name: Install Vundle
   git:
-    repo=https://github.com/gmarik/Vundle.vim.git
-    dest="{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
+    repo: https://github.com/gmarik/Vundle.vim.git
+    dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"

@@ -1,13 +1,14 @@
 - name: Install tmux
-  apt:
-    name=tmux
-    state=latest
   sudo: yes
+  apt:
+    state: latest
+    name:
+      - tmux
 
 - name: Create tmux config symlinks
   file:
-    src={{ item }}
-    dest="{{ ansible_env.HOME }}/{{ item | basename }}"
-    state=link
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/{{ item | basename }}"
+    state: link
   with_items:
     - "{{ dotfiles.dot }}/tmux/.tmux.conf"
