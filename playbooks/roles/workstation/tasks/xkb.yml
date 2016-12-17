@@ -22,3 +22,6 @@
   template:
     src: "load-xkb-settings.desktop.j2"
     dest: "{{ ansible_env.HOME }}/.config/autostart/load-xkb-settings.desktop"
+
+- name: Disable DE keyboard handling
+  shell: gsettings set org.gnome.settings-daemon.plugins.keyboard active false
