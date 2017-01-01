@@ -11,11 +11,22 @@
 
 set $mod Mod4
 
+set $q 24
+set $w 25
+set $e 26
+set $r 27
+
+set $a 38
+set $s 39
+set $d 40
+set $f 41
 set $h 43
 set $j 44
 set $k 45
 set $l 46
 
+set $c 54
+set $v 55
 set $b 56
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -40,10 +51,10 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindcode $mod+Shift+$q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindcode $mod+$d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -77,15 +88,15 @@ bindsym $mod+Shift+Right move right
 bindcode $mod+$b split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindcode $mod+$v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindcode $mod+$f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindcode $mod+$s layout stacking
+bindcode $mod+$w layout tabbed
+bindcode $mod+$e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -94,7 +105,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindcode $mod+$a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -124,11 +135,11 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindcode $mod+Shift+$c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindcode $mod+Shift+$r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindcode $mod+Shift+$e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -138,10 +149,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindcode $h resize shrink width 10 px or 10 ppt
+        bindcode $j resize grow height 10 px or 10 ppt
+        bindcode $k resize shrink height 10 px or 10 ppt
+        bindcode $l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -154,7 +165,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindcode $mod+$r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
