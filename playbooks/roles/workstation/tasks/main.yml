@@ -4,3 +4,4 @@
 - include: vim.yml
 - include: zsh.yml
 - include: xkb.yml
+- include: i3.yml
