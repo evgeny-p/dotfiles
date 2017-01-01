@@ -15,3 +15,9 @@
     src: "{{ dotfiles.dot }}/i3/config"
     dest: "{{ ansible_env.HOME }}/.config/i3/config"
     state: link
+
+- name: Install kbdd
+  become: yes
+  apt:
+    state: latest
+    name: kbdd

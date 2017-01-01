@@ -165,3 +165,4 @@ bar {
 
 exec unity-settings-daemon
 exec ~/dotfiles/scripts/xkbcomp-load.sh
+exec kbdd
