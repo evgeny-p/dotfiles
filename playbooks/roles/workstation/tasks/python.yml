@@ -1,5 +1,5 @@
 - name: Install python
-  sudo: yes
+  become: yes
   apt:
     state: latest
     name:

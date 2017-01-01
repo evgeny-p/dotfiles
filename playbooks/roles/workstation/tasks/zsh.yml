@@ -1,5 +1,5 @@
 - name: Install zsh
-  sudo: yes
+  become: yes
   apt:
     state: latest
     name:
@@ -26,4 +26,4 @@
 
 - name: Change shell to zsh
   shell: "chsh -s /bin/zsh {{ ansible_env.USER }}"
-  sudo: yes
+  become: yes
