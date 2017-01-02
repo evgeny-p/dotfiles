@@ -16,6 +16,18 @@
     dest: "{{ ansible_env.HOME }}/.config/i3/config"
     state: link
 
+- name: Create i3status config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/i3status"
+    state: directory
+    mode: 0755
+
+- name: Create i3status config symlinks
+  file:
+    src: "{{ dotfiles.dot }}/i3status/config"
+    dest: "{{ ansible_env.HOME }}/.config/i3status/config"
+    state: link
+
 - name: Install kbdd
   become: yes
   apt:
