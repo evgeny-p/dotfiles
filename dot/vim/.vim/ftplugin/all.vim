@@ -7,11 +7,6 @@ set listchars=trail:·,precedes:«,extends:»,tab:▸\
 set list
 
 " Removes trailing spaces
-function! TrimWhiteSpace()
-    %s/\s*$//
-    ''
-:endfunction
-
-autocmd BufWritePre * :call TrimWhiteSpace()
+autocmd BufWritePre * %s/\s\+$//e
 
 setlocal expandtab
