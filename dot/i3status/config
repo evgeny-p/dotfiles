@@ -6,6 +6,7 @@ general {
 order += "ethernet _first_"
 order += "load"
 order += "volume master"
+order += "battery 0"
 order += "tztime local"
 
 volume master {
@@ -26,4 +27,12 @@ tztime local {
 
 load {
         format = "%1min"
+}
+
+battery 0 {
+		format = "%status %percentage %remaining"
+		format_down = "No battery"
+		status_chr = "⚇ CHR"
+		status_bat = "⚡ BAT"
+		status_full = "☻ FULL"
 }
