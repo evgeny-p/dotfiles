@@ -73,3 +73,5 @@ venvwrapper_dir='/usr/share/virtualenvwrapper/virtualenvwrapper.sh'
 if [[ -f $venvwrapper_dir ]]; then
     source $venvwrapper_dir
 fi
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
