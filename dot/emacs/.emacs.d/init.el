@@ -9,6 +9,7 @@
 
 (defvar my-packages
   '(company
+    company-rtags
     fill-column-indicator
     greymatters-theme
     monokai-theme

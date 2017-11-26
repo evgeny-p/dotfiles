@@ -15,6 +15,14 @@
   (show-paren-mode 1)
   (define-key c-mode-base-map [f4] 'ff-find-related-file)
 
+  (setq rtags-autostart-diagnostics t)
+  (setq rtags-completions-enabled t)
+  (define-key c-mode-base-map (kbd "M-.") 'rtags-find-symbol-at-point)
+  (define-key c-mode-base-map (kbd "M-,") 'rtags-location-stack-back)
+
+  (setq company-backends '(company-rtags))
+  (company-mode 1)
+
   ; fill column indicator
   ; Switched off: conflicts with company mode
   ; https://github.com/alpaker/Fill-Column-Indicator/issues/54
