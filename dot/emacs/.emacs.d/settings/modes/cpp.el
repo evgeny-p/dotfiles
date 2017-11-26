@@ -17,6 +17,7 @@
 
   (setq rtags-autostart-diagnostics t)
   (setq rtags-completions-enabled t)
+  (setq rtags-display-result-backend 'helm)
   (define-key c-mode-base-map (kbd "M-.") 'rtags-find-symbol-at-point)
   (define-key c-mode-base-map (kbd "M-,") 'rtags-location-stack-back)
 
