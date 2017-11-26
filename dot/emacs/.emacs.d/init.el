@@ -38,11 +38,5 @@
 
 (load-directory "~/.emacs.d/settings")
 
-;; Rust
-(setq racer-cmd "/home/evgeny/bin/racer")
-(setq racer-rust-src-path "/home/evgeny/soft/rustc-1.8.0/src")
-
-(add-hook 'racer-mode-hook #'company-mode)
-
 (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
 (setq company-tooltip-align-annotations t)
