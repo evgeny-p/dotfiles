@@ -11,6 +11,7 @@
   '(company
     company-rtags
     fill-column-indicator
+    flycheck-rtags
     helm-rtags
     greymatters-theme
     monokai-theme

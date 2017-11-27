@@ -10,6 +10,14 @@
                                    (arglist-cont-nonempty . +)
                                    (member-init-intro . 0)))))
 
+(defun my-flycheck-rtags-setup ()
+    (flycheck-select-checker 'rtags)
+    ;; RTags creates more accurate overlays.
+    (setq-local flycheck-highlighting-mode nil)
+    (setq-local flycheck-check-syntax-automatically nil))
+
+(add-hook 'c++-mode-hook 'my-flycheck-rtags-setup)
+
 (defun my-c++-mode-hook ()
   (c-set-style "my-style")
   (show-paren-mode 1)
@@ -23,6 +31,8 @@
 
   (setq company-backends '(company-rtags))
   (company-mode 1)
+
+  (flycheck-mode 1)
 
   ; fill column indicator
   ; Switched off: conflicts with company mode
