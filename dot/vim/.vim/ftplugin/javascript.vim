@@ -1,5 +1,7 @@
 " File ~/.vim/ftplugin/js.vim
 
+source ~/.vim/ftplugin/all.vim
+
 setlocal cindent
 setlocal smartindent
 setlocal autoindent
