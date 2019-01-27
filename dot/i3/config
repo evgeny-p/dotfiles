@@ -181,7 +181,7 @@ bar {
         tray_output primary
 }
 
-bindcode $mod+Control+$l exec i3lock -d -c 000000
+bindcode $mod+Control+$l exec i3lock -c 0a3050
 
 exec unity-settings-daemon
 exec ~/dotfiles/scripts/xkbcomp-load.sh
