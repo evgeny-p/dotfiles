@@ -12,4 +12,5 @@
       - htop
       - mc
       - ncdu
+      - ssh
       - tree
