@@ -7,6 +7,7 @@
       - g++
       - gcc
       - gdb
+      - git-gui
       - gitk
       - htop
       - mc
