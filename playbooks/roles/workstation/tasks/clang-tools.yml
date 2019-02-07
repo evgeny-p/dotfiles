@@ -1,0 +1,20 @@
+---
+- name: Add llvm apt key
+  become: yes
+  apt_key:
+    url: https://apt.llvm.org/llvm-snapshot.gpg.key
+    state: present
+
+- name: Add llvm apt repos
+  become: yes
+  apt_repository:
+    repo: deb http://apt.llvm.org/{{ ansible_lsb.codename }}/ llvm-toolchain-{{ ansible_lsb.codename }}-7 main
+    state: present
+
+- name: Install llvm tools
+  become: yes
+  apt:
+    state: latest
+    name:
+      - clang-format-7
+      - clang-tidy-7
