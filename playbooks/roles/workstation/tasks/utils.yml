@@ -3,6 +3,7 @@
   apt:
     state: latest
     name:
+      - cloc
       - cmake
       - g++
       - gcc
