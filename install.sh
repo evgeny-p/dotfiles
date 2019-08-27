@@ -8,7 +8,7 @@ main() {
     exit 1
   }
 
-  ansible-playbook $SCRIPTDIR/playbooks/workstation.yml --ask-sudo-pass
+  ansible-playbook $SCRIPTDIR/playbooks/workstation.yml --ask-become-pass
 }
 
 main
