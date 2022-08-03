@@ -1,0 +1,15 @@
+[alias]
+	hst = log --decorate --oneline --graph
+	hist = log --decorate --oneline --graph --all
+[core]
+	editor = code --wait
+	quotepath = false
+	commitGraph = true
+[gc]
+	writeCommitGraph = true
+[gui]
+	tabsize = 4
+[merge]
+	conflictstyle = diff3
+[push]
+	autoSetupRemote = true

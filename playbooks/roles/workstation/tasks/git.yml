@@ -1,0 +1,7 @@
+- name: Create .gitconfig symlink
+  file:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/{{ item | basename }}"
+    state: link
+  with_items:
+    - "{{ dotfiles.dot }}/git/.gitconfig"
