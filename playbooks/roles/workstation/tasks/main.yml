@@ -1,9 +1,0 @@
-- include: git.yml
-- include: python.yml
-- include: tmux.yml
-- include: utils.yml
-- include: vim.yml
-- include: zsh.yml
-- include: xkb.yml
-- include: us.yml
-- include: clang-tools.yml

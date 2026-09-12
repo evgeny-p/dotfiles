@@ -1,3 +1,0 @@
-dotfiles:
-  repo: "{{ ansible_env.HOME }}/dotfiles"
-  dot: "{{ ansible_env.HOME }}/dotfiles/dot"

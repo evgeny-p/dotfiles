@@ -1,8 +1,0 @@
-- name: Install python
-  become: yes
-  apt:
-    state: latest
-    name:
-      - python
-      - python3
-      - virtualenvwrapper
