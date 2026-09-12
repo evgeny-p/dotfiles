@@ -1,0 +1,17 @@
+---
+- name: Assert that the platform is supported
+  ansible.builtin.assert:
+    that: ansible_facts['os_family'] in ['Darwin', 'Debian']
+    fail_msg: "fish role supports macOS and Debian/Ubuntu only, got {{ ansible_facts['os_family'] }}"
+    quiet: true
+
+- name: Install fish
+  ansible.builtin.include_tasks: "install-{{ ansible_facts['os_family'] }}.yml"
+
+- name: Configure fish
+  ansible.builtin.import_tasks: config.yml
+  when: fish_manage_config | bool
+
+- name: Set fish as the login shell
+  ansible.builtin.import_tasks: shell.yml
+  when: fish_set_default_shell | bool

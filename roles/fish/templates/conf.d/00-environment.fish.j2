@@ -1,0 +1,20 @@
+# {{ ansible_managed }}
+{% if ansible_facts['os_family'] == 'Darwin' %}
+
+# Homebrew: PATH, MANPATH, INFOPATH.
+if test -x {{ homebrew_prefix }}/bin/brew
+    {{ homebrew_prefix }}/bin/brew shellenv | source
+end
+{% endif %}
+{% if fish_user_paths %}
+
+for dir in {{ fish_user_paths | map('quote') | join(' ') }}
+    test -d $dir; and fish_add_path -g -p $dir
+end
+{% endif %}
+{% if fish_environment %}
+
+{% for name, value in fish_environment | dictsort %}
+set -gx {{ name }} {{ value | quote }}
+{% endfor %}
+{% endif %}

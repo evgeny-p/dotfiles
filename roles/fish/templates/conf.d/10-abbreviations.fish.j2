@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+{% if fish_abbreviations %}
+
+if status is-interactive
+{% for name, value in fish_abbreviations | dictsort %}
+    abbr --add {{ name | quote }} {{ value }}
+{% endfor %}
+end
+{% endif %}

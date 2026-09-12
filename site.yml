@@ -1,0 +1,9 @@
+---
+- name: Configure workstations
+  hosts: workstations
+  gather_facts: true
+  become: false
+
+  roles:
+    - role: fish
+      tags: [fish, shell]

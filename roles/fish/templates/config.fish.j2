@@ -1,0 +1,8 @@
+# {{ ansible_managed }}
+#
+# Environment and abbreviations live in conf.d/*, this file only carries
+# interactive settings.
+
+if status is-interactive
+    set -g fish_greeting '{{ fish_greeting }}'
+end

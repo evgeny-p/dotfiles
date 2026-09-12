@@ -1,0 +1,16 @@
+---
+- name: Check that Homebrew is available
+  ansible.builtin.stat:
+    path: "{{ homebrew_prefix }}/bin/brew"
+  register: fish_brew
+
+- name: Assert that Homebrew is installed
+  ansible.builtin.assert:
+    that: fish_brew.stat.exists
+    fail_msg: "Homebrew is not installed at {{ homebrew_prefix }}, see https://brew.sh"
+    quiet: true
+
+- name: Install fish package
+  community.general.homebrew:
+    name: fish
+    state: present

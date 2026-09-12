@@ -1,0 +1,27 @@
+---
+- name: Create fish configuration directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "{{ fish_config_dir }}"
+    - "{{ fish_config_dir }}/conf.d"
+    - "{{ fish_config_dir }}/functions"
+    - "{{ fish_config_dir }}/completions"
+
+- name: Deploy config.fish
+  ansible.builtin.template:
+    src: config.fish.j2
+    dest: "{{ fish_config_dir }}/config.fish"
+    mode: "0644"
+    backup: true
+
+- name: Deploy conf.d snippets
+  ansible.builtin.template:
+    src: "conf.d/{{ item }}.j2"
+    dest: "{{ fish_config_dir }}/conf.d/{{ item }}"
+    mode: "0644"
+  loop:
+    - 00-environment.fish
+    - 10-abbreviations.fish

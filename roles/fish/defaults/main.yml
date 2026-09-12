@@ -1,0 +1,31 @@
+---
+# Location of the fish configuration tree.
+fish_config_dir: "{{ ansible_facts['user_dir'] }}/.config/fish"
+
+# Path to the fish binary, depends on how the package was installed.
+fish_path: >-
+  {{ '/usr/bin/fish'
+     if ansible_facts['os_family'] == 'Debian'
+     else homebrew_prefix ~ '/bin/fish' }}
+
+# Deploy config.fish and conf.d/*.
+fish_manage_config: true
+
+# Make fish the login shell of the current user (requires become).
+fish_set_default_shell: false
+
+# Ubuntu: install fish from the upstream PPA instead of the distro repository.
+fish_apt_use_ppa: false
+fish_apt_ppa: ppa:fish-shell/release-3
+
+# Interactive greeting; an empty string disables it.
+fish_greeting: ""
+
+# Environment variables: name -> value.
+fish_environment: {}
+
+# Directories prepended to PATH when they exist.
+fish_user_paths: []
+
+# Abbreviations: name -> expansion.
+fish_abbreviations: {}

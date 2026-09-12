@@ -1,0 +1,25 @@
+---
+- name: Install prerequisites for adding a PPA
+  ansible.builtin.apt:
+    name: software-properties-common
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+  become: true
+  when: fish_apt_use_ppa | bool
+
+- name: Add fish-shell PPA
+  ansible.builtin.apt_repository:
+    repo: "{{ fish_apt_ppa }}"
+    state: present
+    update_cache: true
+  become: true
+  when: fish_apt_use_ppa | bool
+
+- name: Install fish package
+  ansible.builtin.apt:
+    name: fish
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+  become: true

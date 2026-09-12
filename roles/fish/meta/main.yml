@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  role_name: fish
+  description: Install and pre-configure the fish shell
+  min_ansible_version: "2.15"
+  platforms:
+    - name: Ubuntu
+      versions: [jammy, noble]
+    - name: MacOSX
+      versions: [all]
+
+dependencies: []

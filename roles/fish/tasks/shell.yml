@@ -1,0 +1,14 @@
+---
+- name: Ensure fish is listed in /etc/shells
+  ansible.builtin.lineinfile:
+    path: /etc/shells
+    line: "{{ fish_path }}"
+    state: present
+    mode: "0644"
+  become: true
+
+- name: Set fish as the login shell for {{ ansible_facts['user_id'] }}
+  ansible.builtin.user:
+    name: "{{ ansible_facts['user_id'] }}"
+    shell: "{{ fish_path }}"
+  become: true
