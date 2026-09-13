@@ -1,0 +1,17 @@
+---
+- name: Create the user font directory
+  ansible.builtin.file:
+    path: "{{ fonts_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Install fonts
+  ansible.builtin.get_url:
+    url: "{{ fonts_base_url }}/{{ item.key | urlencode }}"
+    dest: "{{ fonts_dir }}/{{ item.key }}"
+    checksum: "sha256:{{ item.value }}"
+    mode: "0644"
+  loop: "{{ fonts_files | dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
+  notify: Rebuild the font cache

@@ -44,6 +44,18 @@ ansible-playbook site.yml --check --diff
 
 ## Roles
 
+### fonts
+
+Downloads MesloLGS NF — the Nerd Font tide recommends — into the per-user
+font directory (`~/Library/Fonts` on macOS, `~/.local/share/fonts` on
+Ubuntu, followed by `fc-cache`). No privileges needed. The files are pinned
+to a commit of `romkatv/powerlevel10k-media` and verified by sha256, so
+every machine ends up with the same bytes.
+
+The font covers the full Russian alphabet, and its Cyrillic glyphs carry the
+same advance width as the Latin ones, so box drawing and alignment survive.
+Missing: the rouble sign (U+20BD) and the extended Cyrillic blocks.
+
 ### fish
 
 Installs fish (Homebrew on macOS, apt on Ubuntu), deploys

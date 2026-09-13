@@ -1,0 +1,10 @@
+---
+# macOS picks up ~/Library/Fonts on its own, fontconfig needs a nudge.
+- name: Rebuild the font cache
+  ansible.builtin.command:
+    argv:
+      - fc-cache
+      - --force
+      - "{{ fonts_dir }}"
+  changed_when: true
+  when: ansible_facts['os_family'] != 'Darwin'

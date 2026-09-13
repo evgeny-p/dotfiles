@@ -1,0 +1,14 @@
+---
+# Per-user font directory; both locations need no privileges.
+fonts_dir: >-
+  {{ ansible_facts['user_dir'] ~ '/Library/Fonts'
+     if ansible_facts['os_family'] == 'Darwin'
+     else ansible_facts['user_dir'] ~ '/.local/share/fonts' }}
+
+# Source of the font files, pinned to a commit so every machine gets the
+# same bytes; the checksums in fonts_files are verified on download.
+fonts_base_url: "https://github.com/romkatv/powerlevel10k-media/raw/{{ fonts_media_commit }}"
+fonts_media_commit: 145eb9fbc2f42ee408dacd9b22d8e6e0e553f83d
+
+# File name -> sha256 checksum.
+fonts_files: {}

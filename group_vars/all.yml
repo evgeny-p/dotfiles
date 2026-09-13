@@ -24,6 +24,14 @@ fish_abbreviations:
   ll: ls -lah
   "..": cd ..
 
+# MesloLGS NF — the Nerd Font tide recommends. Full Russian alphabet, and
+# Cyrillic glyphs keep the Latin advance width, so alignment holds.
+fonts_files:
+  MesloLGS NF Regular.ttf: d97946186e97f8d7c0139e8983abf40a1d2d086924f2c5dbf1c29bd8f2c6e57d
+  MesloLGS NF Bold.ttf: b6c0199cf7c7483c8343ea020658925e6de0aeb318b89908152fcb4d19226003
+  MesloLGS NF Italic.ttf: 6f357bcbe2597704e157a915625928bca38364a89c22a4ac36e7a116dcd392ef
+  MesloLGS NF Bold Italic.ttf: 56b4131adecec052c4b324efb818dd326d586dbc316fc68f98f1cae2eb8d1220
+
 fish_plugins:
   - IlanCosman/tide@v6.2.0
 
