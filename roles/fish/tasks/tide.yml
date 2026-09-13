@@ -1,0 +1,55 @@
+---
+- name: Get the installed fish version
+  ansible.builtin.command:
+    argv:
+      - "{{ fish_path }}"
+      - --version
+  register: fish_version_check
+  changed_when: false
+  check_mode: false
+  failed_when: false
+
+- name: Assert that fish is recent enough for tide
+  ansible.builtin.assert:
+    that: fish_installed_version is version(fish_tide_min_fish_version, '>=')
+    fail_msg: >-
+      tide needs fish {{ fish_tide_min_fish_version }} or newer, found {{ fish_installed_version }};
+      on Ubuntu set fish_apt_use_ppa to true to install fish from {{ fish_apt_ppa }}
+    quiet: true
+  vars:
+    fish_installed_version: "{{ fish_version_check.stdout | default('') | regex_search('[0-9]+[.][0-9]+[.][0-9]+') | default('', true) }}"
+  when: fish_installed_version | length > 0
+
+# tide keeps its settings in universal variables, which live outside this
+# repository; the options actually applied are recorded to detect drift.
+- name: Build the tide configure options
+  ansible.builtin.set_fact:
+    fish_tide_options: "{% for option, value in fish_tide_configure | dictsort %}--{{ option }}={{ value | quote }} {% endfor %}"
+
+- name: Check for a recorded tide configuration
+  ansible.builtin.stat:
+    path: "{{ fish_tide_state_file }}"
+  register: fish_tide_state
+
+- name: Read the recorded tide configuration
+  ansible.builtin.slurp:
+    src: "{{ fish_tide_state_file }}"
+  register: fish_tide_recorded
+  when: fish_tide_state.stat.exists
+
+- name: Configure the tide prompt
+  ansible.builtin.command:
+    argv:
+      - "{{ fish_path }}"
+      - --command
+      - "tide configure --auto {{ fish_tide_options }}"
+  register: fish_tide_configured
+  changed_when: true
+  when: (fish_tide_recorded.content | default('') | b64decode) != fish_tide_options
+
+- name: Record the applied tide configuration
+  ansible.builtin.copy:
+    content: "{{ fish_tide_options }}"
+    dest: "{{ fish_tide_state_file }}"
+    mode: "0644"
+  when: fish_tide_configured is changed

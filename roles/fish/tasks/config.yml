@@ -1,15 +1,4 @@
 ---
-- name: Create fish configuration directories
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-    mode: "0755"
-  loop:
-    - "{{ fish_config_dir }}"
-    - "{{ fish_config_dir }}/conf.d"
-    - "{{ fish_config_dir }}/functions"
-    - "{{ fish_config_dir }}/completions"
-
 - name: Deploy config.fish
   ansible.builtin.template:
     src: config.fish.j2

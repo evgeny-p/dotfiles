@@ -1,0 +1,17 @@
+---
+- name: Install the fisher plugin manager
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/jorgebucaran/fisher/{{ fisher_version }}/functions/fisher.fish"
+    dest: "{{ fish_config_dir }}/functions/fisher.fish"
+    mode: "0644"
+  notify: Synchronise fish plugins
+
+# fisher rewrites this file itself, keeping only the plugins it has actually
+# installed and dropping every line containing whitespace, so the template
+# must carry no header and no comments.
+- name: Declare the installed plugins
+  ansible.builtin.template:
+    src: fish_plugins.j2
+    dest: "{{ fish_config_dir }}/fish_plugins"
+    mode: "0644"
+  notify: Synchronise fish plugins

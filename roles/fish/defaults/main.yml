@@ -15,8 +15,9 @@ fish_manage_config: true
 fish_set_default_shell: false
 
 # Ubuntu: install fish from the upstream PPA instead of the distro repository.
+# The distro package lags behind (24.04 ships 3.7), the PPA carries fish 4.
 fish_apt_use_ppa: false
-fish_apt_ppa: ppa:fish-shell/release-3
+fish_apt_ppa: ppa:fish-shell/release-4
 
 # Interactive greeting; an empty string disables it.
 fish_greeting: ""
@@ -29,3 +30,16 @@ fish_user_paths: []
 
 # Abbreviations: name -> expansion.
 fish_abbreviations: {}
+
+# Plugins managed by fisher, pinned to a tag; an empty list turns plugin
+# management off entirely. fisher itself must NOT be listed: the role owns
+# functions/fisher.fish, and fisher refuses to install over an existing file.
+fisher_version: 4.4.8
+fish_plugins: []
+
+# Options for a non-interactive `tide configure --auto`; an empty dict skips
+# the prompt setup. Every choice on the path of the selected style has to be
+# given, otherwise tide aborts with "Missing input for choice".
+fish_tide_configure: {}
+fish_tide_min_fish_version: "4.0"
+fish_tide_state_file: "{{ fish_config_dir }}/.tide-configure-state"

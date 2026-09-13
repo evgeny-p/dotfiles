@@ -1,0 +1,13 @@
+---
+# `fisher update` without arguments reconciles the installed plugins with
+# fish_plugins: it installs what is missing and removes what was dropped.
+- name: Synchronise fish plugins
+  ansible.builtin.command:
+    argv:
+      - "{{ fish_path }}"
+      - --command
+      - fisher update
+  register: fish_fisher_update
+  changed_when: true
+  # fisher reports failures on stderr and still exits 0, so check the output.
+  failed_when: "'fisher: ' in fish_fisher_update.stderr"
